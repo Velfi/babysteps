@@ -1,0 +1,12 @@
+- Fix posts with `excerpt_separator: <!-- more -->`
+- Add `mermaid` support
+- Update internal links that rely on `{{ site.baseurl }}`
+- spellcheck all posts
+- date_to_xmlschema is use in the existing post layout, should we continue doing that?
+- incorporate header and footer
+- incorporate the `_rust` content
+- incorporate Niko's publications
+- add "About" page
+- Support discus comments
+- Support automatic page excerpts
+- 
