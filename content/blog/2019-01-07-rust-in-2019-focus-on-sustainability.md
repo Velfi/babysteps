@@ -136,7 +136,7 @@ to learn how rustc works, and it makes us spend more time fixing bugs
 and ICEs.
 
 I would like to see us put a lot of effort into making rustc more
-approachable and maintaineable. This means writing documentation, both
+approachable and maintainable. This means writing documentation, both
 of the [rustdoc] and [rustc-guide] variety. It also means finishing up
 things we started but never quite finished, like replacing the
 remaining uses of [`NodeId`] with the newer [`HirId`]. In some cases,

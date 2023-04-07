@@ -16,7 +16,7 @@ where a closure conflicts with its creator function -- in my post on
 [Precise Closure Capture Clauses][cc]. But the problem is more
 general.
 
-[cc]: {{ site.baseurl }}/blog/2018/04/24/rust-pattern-precise-closure-capture-clauses/
+[cc]: /blog/2018/04/24/rust-pattern-precise-closure-capture-clauses/
 
 ## The problem
 
@@ -179,7 +179,7 @@ and it's nice that we can extract it. But definitely not always. It
 can be more verbose, and I sometimes find that it makes things more
 opaque, simply because there are now just more structs running around
 that I have to look at.  Some things are so simple that the complexity
-of having a struct outweights the win of isolating a distinct bit of
+of having a struct outweighs the win of isolating a distinct bit of
 functionality.
 
 The other problem with factoring is that it doesn't always work:
@@ -231,7 +231,7 @@ annoying if you have a lot of fields, or if the method you are
 converting calls other methods (in which case you need to identify the
 transitive set of fields). There is another technique I have used from
 time to time, though it's fairly heavy weight. The idea is to define a
-"view struct" which has all the same fields as the orignal, but it
+"view struct" which has all the same fields as the original, but it
 uses references to identify if those fields are used in a "shared"
 (immutable) or "mutable" way.
 
@@ -329,7 +329,7 @@ desugaring. In this case, the closure would only capture
 There has been discussion on and off about how to solve this problem.
 Clearly, there is a need to permit methods to expose information about
 which fields they access and how they access those fields, but it's not
-clear what's the best way to do this. There are a number of tradeoffs at play:
+clear what's the best way to do this. There are a number of trade-offs at play:
 
 - Adding more concepts to the surface language.
 - Core complexity; this probably involves extending the base borrow checker rules.
@@ -371,4 +371,4 @@ we will hopefully have a solution sooner.)
 To discuss this, I [have opened a thread on
 `users.rust-lang.org`](https://users.rust-lang.org/t/blog-post-series-after-nll-whats-next-for-borrowing-and-lifetimes/21864). Once
 the "What's next?" series is done, I will also open a survey to gather
-more quantitive feedback.
+more quantitative feedback.

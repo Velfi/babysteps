@@ -6,7 +6,10 @@
 - incorporate header and footer
 - incorporate the `_rust` content
 - incorporate Niko's publications
-- add "About" page
 - Support discus comments
 - Support automatic page excerpts
-- 
+- Some posts had the same name when Zola removed date from filename. I had to add "part 2" to them. Run that by Niko.
+  - `/blog/intermingled-parameter-lists/` from files ["content/blog/2013-10-29-intermingled-parameter-lists.md", "content/blog/2013-11-04-intermingled-parameter-lists.md"]
+  - `/blog/optimizing-simd/` from files ["content/blog/2013-11-21-optimizing-simd.md", "content/blog/2013-11-22-optimizing-simd.md"]
+  - `/blog/fn-types/` from files ["content/blog/2012-07-12-fn-types.md", "content/blog/2012-05-07-fn-types.md"]
+  - `/blog/borrowed-pointer-tutorial/` from files ["content/blog/2012-07-17-borrowed-pointer-tutorial.md", "content/blog/2012-07-10-borrowed-pointer-tutorial.md"]

@@ -34,7 +34,7 @@ quite obsessed with Prolog lately so now I have to advocate studying
 it to everyone (that and Smalltalk -- well, and Rust of course
 :wink:). More seriously, if you've never worked with Prolog, don't
 worry, I'll try to explain some as we go. But you may want to keep the
-wikipedia page loaded up. =)
+Wikipedia page loaded up. =)
 
 Anyway, so, the mapping between traits and logic is pretty straightforward.
 Imagine we declare a trait and a few impls, like so:
@@ -137,7 +137,7 @@ And this brings us to an important point: we need to think about what
 *equality* means in this logic. You can see that I've been writing
 Prolog-like notation but using Rust types; this might have seemed like
 a notational convenience (and it is), but it actually masks something
-deeper. The notion of equality for a Rust type is sigificantly richer
+deeper. The notion of equality for a Rust type is significantly richer
 than Prolog's notion of equality, which is a very simple syntactic
 unification.
 

@@ -175,7 +175,7 @@ impl<I> AsyncIterator for BoxingAsyncIterator<'i, I> {
 
 One of the goals with the [previous proposal] was to allow you to write code that used `dyn AsyncIterator` which worked equally well in std and no-std environments. I would say that goal was partially achieved. The core idea was that the caller would choose the strategy by which the future got allocated, and so it could opt to use inline allocation (and thus be no-std compatible) or use boxing (and thus be simple). 
 
-[previous proposal]: {{ site.baseurl }}/blog/2022/09/18/dyn-async-traits-part-8-the-soul-of-rust/
+[previous proposal]: /blog/2022/09/18/dyn-async-traits-part-8-the-soul-of-rust/
 
 In this proposal, the call-site has to choose. You might think then that you could just choose to use stack allocation at the call-site and thus be no-std compatible. But how does one choose stack allocation? It's actually quite tricky! Part of the problem is that async stack frames are stored in structs, and thus we cannot support something like `alloca` (at least not for values that will be live across an await, which includes any future that is awaited[^expl]). In fact, even outside of async, using alloca is quite hard! The problem is that a stack is, well, a stack. Ideally, you would do the allocation just before your callee returns, but that's when you know how much memory you need. But at that time, your callee is still using the stack, so your allocation is on the wrong spot.[^ada] I personally think we should just rule out the idea of using alloca to do stack allocation.
 
@@ -185,7 +185,7 @@ In this proposal, the call-site has to choose. You might think then that you cou
 
 If we can't use alloca, what can we do? We have a few choices. In the very beginning, I talked about the idea of a `maybe_box` function that would take a buffer and use it only for really large values. That's kind of nifty, but it still relies on a box fallback, so it doesn't really work for no-std.[^abort] Might be a nice alternative to [stackfuture](https://twitter.com/theinedibleholk/status/1557802452069388288) though![^size]
 
-[^abort]: You could imagine a version that aborted the code if the size is wrong, too, which would make it no-std safe, but not in a realiable way (aborts == yuck).
+[^abort]: You could imagine a version that aborted the code if the size is wrong, too, which would make it no-std safe, but not in a reliable way (aborts == yuck).
 
 [^size]: Conceivably you could set the size to `size_of(SomeOtherType)` to automatically determine how much space is needed.
 
@@ -199,7 +199,7 @@ You can also achieve inlining by writing wrapper types ([something tmandry and I
 
 One other concern I had in thinking about this proposal was that it seemed like it was *overspecified*. That is, the vast majority of call-sites in this proposal will be written with `.box`, which thus specifies that they should allocate a box to store the result. But what about ideas like caching the box across invocations, or "best effort" stack allocation? Where do they fit in? From what I can tell, those optimizations are still possible, so long as the `Box` which would be allocated doesn't escape the function (which was the same condition we had before). 
 
-The way to think of it: by writing `foo().box.await`, the user told us to use the boxing allocator to box the return value of `foo`. But we can then see that this result is passed to await, which takes ownership and later frees it. We can thus decide to substitute a different allocator, perhaps one that reuses the box across invocations, or tries to use stack memory; this is fine so long as we modifed the freeing code to match. Doing this relies on knowing that the allocated value is immediately returned to us and that it never leaves our control.
+The way to think of it: by writing `foo().box.await`, the user told us to use the boxing allocator to box the return value of `foo`. But we can then see that this result is passed to await, which takes ownership and later frees it. We can thus decide to substitute a different allocator, perhaps one that reuses the box across invocations, or tries to use stack memory; this is fine so long as we modified the freeing code to match. Doing this relies on knowing that the allocated value is immediately returned to us and that it never leaves our control.
 
 ## Conclusion
 

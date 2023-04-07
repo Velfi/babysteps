@@ -56,7 +56,9 @@ hard_link_static = false
 #       {name = "authors"}, # Basic definition: no feed or pagination
 #     ]
 #
-taxonomies = []
+taxonomies = [
+    {name = "categories", feed = true},
+]
 
 # When set to "true", a search index is built from the pages and section
 # content for `default_language`.
@@ -168,7 +170,5 @@ index_format = "elasticlunr_javascript"
 #
 [extra]
 author = "Nicholas D. Matsakis"
-github_username = "nikomatsakis"
 keywords = "rust, programming, programming languages, compiler, compiler design, compiler development, compiler engineering, compiler research, compiler theory, compiler technology, compiler verification, formal methods, formal verification"
-twitter_username = "nikomatsakis"
 email = "niko@alum.mit.edu"

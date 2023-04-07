@@ -3,20 +3,41 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+  <link rel="stylesheet" href="/theme.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata&display=swap"
+    rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ config.title }}</title>
+  <title>{{ config.title }}{% if page.title %}&mdash; {{ page.title }}{% endif %}</title>
   <meta name="author" content="{{ config.extra.author }}" />
   <meta name="description" content="{{ config.description }}" />
   <meta name="keywords" content="{{ config.extra.keywords }}" />
+  {% block head %}
+  {% endblock head %}
+  <style>
+    html {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-  <section class="section">
-    <div class="container">{% block content %} {% endblock %}</div>
-  </section>
+  {% include "header.html" %}
+  <main>
+    {% block content %} {% endblock %}
+    <div class="back-to-top">
+      <a href="#baby-steps" aria-label="Scroll to Top">🔝</a>
+    </div>
+  </main>
+  {% include "footer.html" %}
 </body>
 
-{% include "footer.html" %}
+<style>
+  html {
+    display: block;
+  }
+</style>
 
 </html>

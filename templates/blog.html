@@ -7,7 +7,7 @@
 
 {% for page in section.pages %}
 <div class="post_section">
-    <p class="listing_date">{{ page.date | date(format="%d %M %YYYY") }}</p>
+    <p class="listing_date">{{ page.date | date(format="%D") }}</p>
     <a href="{{ page.permalink | safe }}">
         <h2 class="listing_title">{{ page.title }}</h3>
     </a>

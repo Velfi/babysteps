@@ -75,7 +75,7 @@ been having with respect to this "After NLL" blog post series. What
 I've realized is that it is a bit tricky to figure out how to organize
 the "taxonomy of tricky situations" that commonly result with
 ownership as well as their solutions. For example, in reading the
-responses to my previous post about *interprocedural conflicts*, I
+responses to my previous post about *inter-procedural conflicts*, I
 realized that this one *fundamental conflict* can manifest in a number
 of ways -- and also that there are a number of possible solutions,
 depending on the specifics of your scenario.

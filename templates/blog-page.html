@@ -1,23 +1,37 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="/post.css" />
+{% endblock head %}
+
 {% block content %}
 <article itemscope itemtype="http://schema.org/BlogPosting">
-    <header>
-        <h1 itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta">
-            <time datetime="{{ page.date }}" itemprop="datePublished">
-                {{ page.date | date(format="%b %-d, %Y") }}
-            </time>
-            {% if page.author %} •
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span itemprop="name">{{ page.author }}</span>
-            </span>
-            {% endif %}
-        </p>
-    </header>
+    <time datetime="{{ page.date }}" itemprop="datePublished">
+        {{ page.date | date(format="%b %-d, %Y") }}
+    </time>
+    {% if page.author %} •
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ page.author }}</span>
+    </span>
+    {% endif %}
+    </p>
+    <h1 itemprop="name headline">{{ page.title }}</h1>
 
     <div class="post-content" itemprop="articleBody">
         {{ page.content | safe }}
     </div>
 </article>
+
+<svg class="rectangles" width="172mm" height="87mm" version="1.1" viewBox="0 0 172 87" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(-12 -109)" stroke-width=".3">
+        <rect transform="rotate(.5)" x="41" y="113" width="21" height="76" />
+        <rect transform="rotate(-1)" x="61" y="112" width="22" height="82" />
+        <rect transform="rotate(2)" x="94" y="107" width="21" height="85" />
+        <rect transform="rotate(-1)" x="112" y="113" width="21" height="84" />
+        <rect transform="rotate(-.9)" x="136" y="113" width="22" height="82" />
+        <rect transform="rotate(.6)" x="165" y="108" width="20" height="87" />
+        <rect transform="rotate(-.9)" x="10" y="112" width="23" height="80" />
+    </g>
+</svg>
+{# <img class="rectangles" src="/rectangles.svg" role="presentation" alt="" /> #}
 {% endblock content %}

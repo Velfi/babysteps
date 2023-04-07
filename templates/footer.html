@@ -1,48 +1,11 @@
-<footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ config.title | escape }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>
-            {% if config.extra.author %}
-            {{ config.extra.author | escape }}
-            {% else %}
-            {{ config.title | escape }}
-            {% endif %}
-          </li>
-          {% if config.email %}
-          <li><a href="mailto:{{ config.email }}">{{ config.email }}</a></li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if config.extra.github_username %}
-          <li>
-            {# {% include icon-github.html username=config.extra.github_username %} #}
-            {{ config.extra.github_username }}
-          </li>
-          {% endif %}
-
-          {% if config.extra.twitter_username %}
-          <li>
-            {# {% include icon-twitter.html username=config.extra.twitter_username %} #}
-            {{ config.extra.twitter_username }}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ config.description | escape }}</p>
-      </div>
-    </div>
-
+<footer>
+  <div class="site-info">
+    <h2 class="footer-heading">{{ config.title }}</h2>
+    <p>{{ config.extra.author }}</p>
   </div>
-
+  <p>{{ config.description }}</p>
+  <div class="social">
+    <a href="https://github.com/nikomatsakis"><img src="/github-icon.svg" alt="" />nikomatsakis</a>
+    <a href="https://twitter.com/nikomatsakis"><img src="/twitter-icon.svg" alt="" />nikomatsakis</a>
+  </div>
 </footer>

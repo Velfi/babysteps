@@ -1,0 +1,26 @@
+@use "./variables" as *;
+
+article > time {
+  white-space: nowrap;
+  text-align: right;
+  display: block;
+}
+
+article h2 {
+  border-bottom: 1px solid $color-accent-2;
+}
+
+.rectangles {
+    fill: $color-gray-1;
+    margin-top: 5rem;
+}
+
+article div.post-content {
+    *:nth-child(odd) {
+        transform: rotateZ(0.2deg);
+    }
+
+    *:nth-child(even) {
+        transform: rotateZ(-0.2deg);
+    }
+}

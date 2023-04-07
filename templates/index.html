@@ -1,8 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-    {{ config.title }}
-</h1>
 <p>Click <a href="{{ get_url(path='@/blog/_index.md') }}">here</a> to see my posts.</p>
+
+{% set blog = get_section(path="blog/_index.md") %}
+{% for page in blog.pages | slice(end=3) %}
+<div>
+    <p class="listing-date">{{ page.date | date(format="%D") }}</p>
+    <a class=listing-title href="{{ page.permalink | safe }}">
+        <h2>{{ page.title }}</h3>
+    </a>
+    <p>
+        {%- if page.content %}
+        {{ page.content | striptags | truncate(length=150) | safe }}
+        {%- endif %}
+        <a href="{{ page.permalink | safe }}">(read more...)</a>
+    </p>
+    <br>
+    <hr>
+</div>
+{% endfor %}
+
 {% endblock content %}
